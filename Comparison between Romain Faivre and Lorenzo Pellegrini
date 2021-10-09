@@ -1,0 +1,36 @@
+import os 
+import matplotlib as plt
+from soccerplots.radar_chart import Radar
+from soccerplots.utils import add_image
+params = ['goals','assist','xG','xA', 'SCA(Fld)','sca(deadpass)','GCA(deadpass)','succesful pressure%','tkl+int','touches(def 3rd)','succesful\ndribbles%', 'Progressive carries','ball recoveries','crosses', 'KP']
+
+ranges = [(0.00,0.89),(0.00,0.54),(0.03,0.81),(0.03,0.48),(0.00,0.88),(0.00,1.76),(0.00,0.24),(19.1,34.7),(0.63,4.72),(1.97,12.67),(36,76.9),(2.65,15.66),(3.79,9.60),(0.41,5.49),(0.39,3.58)]
+
+values = ([0.18,0.15,0.22,0.17,0.50,1.23,0.12,33.2,3.11,10.37,66.4,7.27,7.56,1.49,1.99],[0.28,0.25,0.26,0.28,0.17,1.24,0.19,24.4,2.72,9.08,58,6.50,6.99,1.32,2.15])
+
+title = dict(
+    title_name="Romain Faivre",
+    title_color="blue",
+    subtitle_name = "Brest",
+    subtitle_color="blue",
+    title_name_2="Lorenzo Pellegrini",
+    title_color_2="red",
+    subtitle_name_2="Roma",
+    subtitle_color_2='red',
+    title_fontsize=18,
+    subtitle_fontsize=15#FF5733
+)
+
+
+endnote = "Romain Faivre vs  Lorenzo Pellegrini"
+
+
+## instantiate object 
+radar = Radar(background_color="black", patch_color="black", label_color="white",
+              range_color="white")
+
+## plot radar
+fig, ax = radar.plot_radar(ranges=ranges, params=params, 
+                               values=values, radar_color=['blue', 'red'], 
+                           title=title, endnote=endnote, alphas=[0.25, 0.2], compare=True)
+
